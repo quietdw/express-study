@@ -2,4 +2,14 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+
+  if error
+    p 获取图书馆数据失败。
+  else
+    p 本地图书馆数据统计：
+
+    ul
+      li #[strong 图书:] !{data.book_count}种
+      li #[strong 馆藏:] !{data.book_instance_count}册
+      li #[strong 作者:] !{data.author_count}个
+      li #[strong 类型:] !{data.genre_count}种

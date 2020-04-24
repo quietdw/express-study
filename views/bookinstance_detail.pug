@@ -1,0 +1,26 @@
+extends layout
+
+block content
+
+  h1 ID: #{bookinstance._id}
+  
+  p #[strong 标题：] 
+    a(href=bookinstance.book.url) #{bookinstance.book.title}
+  p #[strong 出版社] #{bookinstance.imprint}
+
+  p #[strong 状态：] 
+    if bookinstance.status=='Available'
+      span.text-success #{bookinstance.status}
+    else if bookinstance.status=='Maintenance'
+      span.text-danger #{bookinstance.status}
+    else
+      span.text-warning #{bookinstance.status} 
+      
+  if bookinstance.status!='Available'
+    p #[strong 归还日期：] #{bookinstance.due_back_formatted}
+
+  hr
+  p
+    a(href=bookinstance.url+'/delete') 删除馆藏
+  p
+    a(href=bookinstance.url+'/update') 修改馆藏
