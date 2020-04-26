@@ -59,7 +59,7 @@ exports.genre_create_get = (req, res) => {
 }
 
 // 由 POST 处理藏书种类创建操作
-exports.genre_create_post = exports.genre_create_post = [
+exports.genre_create_post = [
   // Validate that the name field is not empty.
   body('name', 'Genre name required').isLength({ min: 1 }).trim(),
 
@@ -94,7 +94,7 @@ exports.genre_create_post = exports.genre_create_post = [
           // Genre exists, redirect to its detail page.
           res.redirect(found_genre.url)
         } else {
-          Genre.save(function (err) {
+          genre.save(function (err) {
             if (err) {
               return next(err)
             }

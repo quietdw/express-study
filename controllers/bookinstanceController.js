@@ -102,7 +102,7 @@ exports.bookinstance_create_post = [
       // Data from form is valid.
       console.log(bookinstance)
 
-      BookInstance.save(function (err) {
+      bookinstance.save(function (err) {
         if (err) {
           return next(err)
         }

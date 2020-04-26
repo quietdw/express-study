@@ -1,6 +1,37 @@
 extends layout
 
 block content
+  div(class='row' style='padding:10px;display:flex;align-items:center' )
+  
+    div(class='col-sm-10')
+      if user.isLogin
+          ul(class='sidebar-nav' style="display:flex;")
+            li(style="margin-right:10px")
+              a(href='/catalog/author/create') 新建作者
+            li(style="margin-right:10px") 
+              a(href='/catalog/genre/create') 新建类型
+            li(style="margin-right:10px") 
+              a(href='/catalog/book/create') 新增图书
+            li(style="margin-right:10px") 
+              a(href='/catalog/bookinstance/create') 添加馆藏
+
+    div(class='col-sm-2')
+      ul(class='user-area')
+        if user.isLogin
+          li
+            img(src=user.avatar, alt=user.username)
+          li
+            span #{user.username}
+          li
+            span |
+          li( class="logout")
+            a(href="/auth/logout") 注销
+        else 
+          li( class="login")
+            a(href="/auth/github") GitHub登录（新建修改图书信息）
+    
+  div(class='row')
+
   h1= title
 
   if error

@@ -7,6 +7,17 @@ const { body, validationResult } = require('express-validator/check')
 const { sanitizeBody } = require('express-validator/filter')
 
 exports.index = (req, res) => {
+  var user
+  if (req.session.user) {
+    user = {
+      isLogin: true,
+      ...req.session.user,
+    }
+  } else {
+    user = {
+      isLogin: false,
+    }
+  }
   async.parallel(
     {
       book_count: function (callback) {
@@ -30,6 +41,7 @@ exports.index = (req, res) => {
         title: '本地图书馆',
         error: err,
         data: results,
+        user,
       })
     }
   )
