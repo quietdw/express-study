@@ -22,7 +22,8 @@ passport.use(
     {
       clientID: 'e9b9a5a218b92828acce',
       clientSecret: 'a627872a347b2d39537209041c0bebbdcf83dd0b',
-      callbackURL: 'http://localhost:3000/auth/github/callback',
+      callbackURL:
+        'https://blooming-hamlet-98939.herokuapp.com/auth/github/callback',
     },
     function (accessToken, refreshToken, profile, done) {
       // User.findOrCreate({ githubId: profile.id }, function (err, user) {
